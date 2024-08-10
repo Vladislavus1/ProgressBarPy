@@ -11,7 +11,7 @@ setup(
     name='PyProgressBar',
     version=__version__,
 
-    url='https://github.com/Vladislavus1/OlxPyApi',
+    url='https://github.com/Vladislavus1/PyProgressBar',
     author='Vladislavus1',
     author_email='vlydgames@gmail.com',
 
