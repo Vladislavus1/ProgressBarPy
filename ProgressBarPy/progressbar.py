@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from exceptions import InvalidMaxProgress
+from .exceptions import InvalidMaxProgress
 
 class ProgressBar:
     def __init__(self, max_progress, title="Progress bar", message=None):
@@ -16,17 +16,14 @@ class ProgressBar:
         self.progress_window.title(self.title)
         self.progress_window.iconbitmap(default='icon.ico')
 
-        # Calculate window size
         window_width = 300
         window_height = 50 if not self.message else 100
 
-        # Calculate position to center the window
         screen_width = self.progress_window.winfo_screenwidth()
         screen_height = self.progress_window.winfo_screenheight()
         position_top = int((screen_height - window_height) / 2)
         position_right = int((screen_width - window_width) / 2)
 
-        # Set the geometry with the calculated position
         self.progress_window.geometry(f'{window_width}x{window_height}+{position_right}+{position_top}')
         self.progress_window.resizable(False, False)
         if self.message:
@@ -54,10 +51,11 @@ class ProgressBar:
 # test
 if __name__ == "__main__":
     import time
-    progressbar = ProgressBar(max_progress=100, title='Робота програми', message='Моніторинг цін Philips:')
-    progressbar.display()
 
-    for _ in range(progressbar.max_progress+1):
+    max_progress = 100
+    progressbar = ProgressBar(max_progress=max_progress, title='Progress bar example', message='Processing...')
+    progressbar.display()
+    for _ in range(max_progress + 1):
         time.sleep(0.05)
         progressbar.update()
 
