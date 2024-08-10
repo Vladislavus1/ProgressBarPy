@@ -4,7 +4,7 @@ This is a lightweight Python package that provides a simple, customizable progre
 
 ## How to use it?
 
-Before you start you've t import package:
+Before you start you've to import package:
 
     pip install ProgressBarPy
 
