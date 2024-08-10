@@ -1,20 +1,28 @@
 import tkinter as tk
 from tkinter import ttk
+import tempfile
+import base64
+import zlib
 
-from .exceptions import InvalidMaxProgress
+from exceptions import InvalidMaxProgress
 
 class ProgressBar:
-    def __init__(self, max_progress, title="Progress bar", message=None):
-        self.max_progress = max_progress
+    def __init__(self, maxprogress, title="Progress bar", message=None):
+        self.max_progress = maxprogress
         if self.max_progress <= 0:
-            raise InvalidMaxProgress(max_progress)
+            raise InvalidMaxProgress(maxprogress)
         self.title = title
         self.message = message
         self.current_progress = 0
 
         self.progress_window = tk.Tk()
         self.progress_window.title(self.title)
-        self.progress_window.iconbitmap(default='icon.ico')
+
+        _, self.icon_path = tempfile.mkstemp()
+        with open(self.icon_path, 'wb') as icon_file:
+            icon_file.write(zlib.decompress(base64.b64decode('eJxjYGAEQgEBBiDJwZDBy'
+                                                             'sAgxsDAoAHEQCEGBQaIOAg4sDIgACMUj4JRMApGwQgF/ykEAFXxQRc=')))
+        self.progress_window.iconbitmap(self.icon_path)
 
         window_width = 300
         window_height = 50 if not self.message else 100
@@ -53,7 +61,7 @@ if __name__ == "__main__":
     import time
 
     max_progress = 100
-    progressbar = ProgressBar(max_progress=max_progress, title='Progress bar example', message='Processing...')
+    progressbar = ProgressBar(maxprogress=max_progress, title='Progress bar example', message='Processing...')
     progressbar.display()
     for _ in range(max_progress + 1):
         time.sleep(0.05)

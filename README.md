@@ -1,4 +1,4 @@
-# [ProgressBarPy](https://pypi.org/project/ProgressBarPy)
+# [ProgressBarPy](https://github.com/Vladislavus1/ProgressBarPy)
 
 This is a lightweight Python package that provides a simple, customizable progress bar displayed in a windowed interface using [**Tkinter**](https://docs.python.org/3/library/tkinter.html). It allows developers to easily integrate a visual progress indicator into their applications without needing to manage complex GUI elements. With straightforward methods for updating progress and setting labels, **ProgressBarPy** is an ideal solution for adding a user-friendly progress bar to your Python projects.
 
