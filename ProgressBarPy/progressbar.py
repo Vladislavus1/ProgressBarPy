@@ -4,7 +4,7 @@ import tempfile
 import base64
 import zlib
 
-from exceptions import InvalidMaxProgress
+from .exceptions import InvalidMaxProgress
 
 class ProgressBar:
     def __init__(self, maxprogress, title="Progress bar", message=None):
